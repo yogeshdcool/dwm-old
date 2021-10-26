@@ -111,6 +111,7 @@ static Key keys[] = {
 	{ Mod1Mask,                     XK_F1,     spawn,          sh("~/.config/rofi/bin/powermenu")},
 	{ Mod1Mask,                     XK_F2,     spawn,          sh("~/.config/rofi/bin/network")},
 	{ Mod1Mask,                     XK_F3,     spawn,          sh("~/.config/rofi/bin/screenshot")},
+	{ Mod1Mask,                     XK_F4,     spawn,          sh("~/.config/rofi/bin/volume")},
 	{ MODKEY,                       XK_s,      spawn,          sh("codium")},
 	{ MODKEY,                       XK_F1,     spawn,          sh("systemctl poweroff") },
 	{ MODKEY,             			XK_F2,     spawn,          sh("systemctl suspend") },
