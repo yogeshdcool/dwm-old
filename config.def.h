@@ -41,9 +41,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask   iscentered   isfloating   monitor    scratch key */
-	// { "Brave",    NULL,       NULL,       2,     0,           0,           -1,        0  },
-	{ NULL,       NULL,   "scratchpad",   0,          1,           1,           -1,       's' },
+	/* class  instance  title                      tags mask   iscentered   isfloating   monitor    scratch key */
+	{ NULL,   NULL,     "/Pictures/screenshots/",  0,          1,           1,           -1,        0  },
+	{ NULL,   NULL,     "scratchpad",              0,          1,           1,           -1,       's' },
+	{ NULL,   NULL,     "writepad",                0,          1,           1,           -1,       'n' },
+	{ NULL,   NULL,     "filepad",                 0,          1,           1,           -1,       'r' },
+	{ NULL,   NULL,     "monpad",                  0,          1,           1,           -1,       'g' },
 };
 
 /* layout(s) */
@@ -89,11 +92,13 @@ static const Layout layouts[] = {
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", term, "-t", "scratchpad", NULL}; 
+static const char *nvimpadcmd[]    = {"n", term, "-t", "writepad", "-e", "nvim",  NULL}; 
+static const char *rangerpadcmd[]  = {"r", term, "-t", "filepad", "-e", "ranger", NULL}; 
+static const char *gotoppadcmd[]   = {"g", term, "-t", "monpad", "-e", "gotop",NULL}; 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,		                XK_Return, spawn,          sh(term) },
-	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_w,      spawn,          sh("brave")},
 	{ MODKEY,                       XK_s,      spawn,          sh("codium")},
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          sh("thunar")},
@@ -103,24 +108,29 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          sh(term " -e mocp")},
 	{ 0,		                    XK_Print,  spawn,          sh("scrot 'screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/ ; feh ~/Pictures/screenshots/$f'") },
 	{ MODKEY,                       XK_space,  spawn,          sh("~/.config/rofi/bin/launcher")},
-	{ MODKEY,                       XK_F1,     spawn,          sh("~/.config/rofi/bin/powermenu")},
-	{ MODKEY,                       XK_F2,     spawn,          sh("~/.config/rofi/bin/network")},
-	{ MODKEY,                       XK_F3,     spawn,          sh("~/.config/rofi/bin/screenshot")},
-	{ MODKEY|ShiftMask, 		    XK_z,      spawn,          sh("betterlockscreen -l dimblur") },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          sh("killall xinit") },
-	{ MODKEY|ShiftMask,             XK_c,      spawn,          sh("systemctl poweroff") },
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          sh("systemctl reboot") },
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          sh("systemctl suspend") },
+	{ Mod1Mask,                     XK_F1,     spawn,          sh("~/.config/rofi/bin/powermenu")},
+	{ Mod1Mask,                     XK_F2,     spawn,          sh("~/.config/rofi/bin/network")},
+	{ Mod1Mask,                     XK_F3,     spawn,          sh("~/.config/rofi/bin/screenshot")},
+	{ MODKEY,                       XK_s,      spawn,          sh("codium")},
+	{ MODKEY,                       XK_F1,     spawn,          sh("systemctl poweroff") },
+	{ MODKEY,             			XK_F2,     spawn,          sh("systemctl suspend") },
+	{ MODKEY,             			XK_F3,     spawn,          sh("systemctl reboot") },
+	{ MODKEY, 		    			XK_F4,     spawn,          sh("betterlockscreen -l dimblur") },
+	{ MODKEY,             			XK_F5,     spawn,          sh("killall xinit") },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,     sh("light -A 1") },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,     sh("light -U 1") },
-	{ Mod1Mask,                     XK_F2,     spawn,          sh("light -S 0") },
-	{ Mod1Mask,                     XK_F3,     spawn,          sh("light -S 6") },
+	{ MODKEY|ShiftMask,             XK_F2,     spawn,          sh("light -S 0") },
+	{ MODKEY|ShiftMask,             XK_F3,     spawn,          sh("light -S 6") },
 	{ 0,                            XF86XK_AudioRaiseVolume,   spawn,     sh("amixer -c 0 -q set Master 2dB+") },
 	{ 0,                            XF86XK_AudioLowerVolume,   spawn,     sh("amixer -c 0 -q set Master 2dB-") },
 	{ 0,                            XF86XK_AudioMute,      	   spawn,     sh("amixer set Master toggle") },
 	{ 0,                            XF86XK_AudioPlay,      	   spawn,     sh("mocp -G") },
 	{ 0,                            XF86XK_AudioPrev,      	   spawn,     sh("mocp -r") },
 	{ 0,                            XF86XK_AudioNext,      	   spawn,     sh("mocp -f") },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_i,      togglescratch,  {.v = nvimpadcmd } },
+	{ MODKEY,                       XK_u,      togglescratch,  {.v = rangerpadcmd } },
+	{ MODKEY,                       XK_o,      togglescratch,  {.v = gotoppadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_h,      focusdir,       {.i = 0 } }, // left
 	{ MODKEY,                       XK_l,      focusdir,       {.i = 1 } }, // right
