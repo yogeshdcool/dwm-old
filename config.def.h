@@ -94,7 +94,7 @@ static const Layout layouts[] = {
 static const char *scratchpadcmd[] = {"s", term, "-t", "scratchpad", NULL}; 
 static const char *nvimpadcmd[]    = {"n", term, "-t", "writepad", "-e", "nvim",  NULL}; 
 static const char *rangerpadcmd[]  = {"r", term, "-t", "filepad", "-e", "ranger", NULL}; 
-static const char *gotoppadcmd[]   = {"g", term, "-t", "monpad", "-e", "gotop",NULL}; 
+static const char *htoppadcmd[]   = {"g", term, "-t", "monpad", "-e", "htop",NULL}; 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -113,11 +113,11 @@ static Key keys[] = {
 	{ Mod1Mask,                     XK_F3,     spawn,          sh("~/.config/rofi/bin/screenshot")},
 	{ Mod1Mask,                     XK_F4,     spawn,          sh("~/.config/rofi/bin/volume")},
 	{ MODKEY,                       XK_s,      spawn,          sh("codium")},
-	{ MODKEY,                       XK_F1,     spawn,          sh("systemctl poweroff") },
-	{ MODKEY,             			XK_F2,     spawn,          sh("systemctl suspend") },
-	{ MODKEY,             			XK_F3,     spawn,          sh("systemctl reboot") },
-	{ MODKEY, 		    			XK_F4,     spawn,          sh("betterlockscreen -l dimblur") },
-	{ MODKEY,             			XK_F5,     spawn,          sh("killall xinit") },
+	{ MODKEY,                       XK_F2,     spawn,          sh("systemctl poweroff") },
+	{ MODKEY,             			XK_F3,     spawn,          sh("systemctl suspend") },
+	{ MODKEY,             			XK_F4,     spawn,          sh("systemctl reboot") },
+	{ MODKEY, 		    			XK_F5,     spawn,          sh("betterlockscreen -l dimblur") },
+	{ MODKEY,             			XK_F6,     spawn,          sh("killall xinit") },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn,     sh("light -A 1") },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn,     sh("light -U 1") },
 	{ MODKEY|ShiftMask,             XK_F2,     spawn,          sh("light -S 0") },
@@ -131,7 +131,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_i,      togglescratch,  {.v = nvimpadcmd } },
 	{ MODKEY,                       XK_u,      togglescratch,  {.v = rangerpadcmd } },
-	{ MODKEY,                       XK_o,      togglescratch,  {.v = gotoppadcmd } },
+	{ MODKEY,                       XK_o,      togglescratch,  {.v = htoppadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_h,      focusdir,       {.i = 0 } }, // left
 	{ MODKEY,                       XK_l,      focusdir,       {.i = 1 } }, // right
