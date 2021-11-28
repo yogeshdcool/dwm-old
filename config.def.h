@@ -55,8 +55,10 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
-#include "vanitygaps.c"
+
 #include <X11/XF86keysym.h>
+#include "vanitygaps.c"
+#include "shift-tools.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -158,22 +160,26 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,             			XK_n,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[13]} },
-	{ MODKEY|ControlMask,		    XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY,		    			XK_bracketleft,  cyclelayout,    {.i = -1 } },
+	{ MODKEY,           			XK_bracketright, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_f,      togglefullscreen, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefakefullscreen, {0} },
+	{ MODKEY,                       XK_period, shiftviewclients,  { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, shiftview,         { .i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  shiftview,         { .i = -1 } },
+	{ MODKEY,	                    XK_comma,  shiftviewclients,  { .i = -1 } },
+	{ MODKEY|ShiftMask,				XK_comma,  shiftboth,      { .i = -1 }	},
+	{ MODKEY|ControlMask,			XK_comma,  shiftswaptags,  { .i = -1 }	},
+	{ MODKEY|ControlMask,			XK_period, shiftswaptags,  { .i = +1 }	},
+	{ MODKEY|ShiftMask,             XK_period, shiftboth,      { .i = +1 }	},
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_period, viewnext,       {0} },
-	{ MODKEY,                       XK_comma,  viewprev,       {0} },
-	{ MODKEY|ShiftMask,             XK_period, tagtonext,      {0} },
-	{ MODKEY|ShiftMask,             XK_comma,  tagtoprev,      {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
