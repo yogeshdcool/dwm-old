@@ -95,8 +95,8 @@ static const Layout layouts[] = {
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", term, "-t", "scratchpad", NULL}; 
 static const char *nvimpadcmd[]    = {"n", term, "-t", "writepad", "-e", "nvim",  NULL}; 
-static const char *rangerpadcmd[]  = {"r", term, "-t", "filepad", "-e", "ranger", NULL}; 
-static const char *htoppadcmd[]   = {"g", term, "-t", "monpad", "-e", "htop",NULL}; 
+static const char *lfpadcmd[]      = {"r", term, "-t", "filepad", "-e", "lf", NULL}; 
+static const char *htoppadcmd[]    = {"g", term, "-t", "monpad", "-e", "htop",NULL}; 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -105,7 +105,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      spawn,          sh("codium")},
 	{ MODKEY|ShiftMask,             XK_e,      spawn,          sh("thunar")},
 	{ MODKEY,                       XK_d,      spawn,          sh(term " -e nvim")},
-	{ MODKEY,                       XK_e,      spawn,          sh(term " -e ranger")},
+	{ MODKEY,                       XK_e,      spawn,          sh(term " -e lf")},
 	{ MODKEY,                       XK_a,      spawn,          sh(term " -e htop")},
 	{ MODKEY,                       XK_g,      spawn,          sh(term " -e gotop -a")},
 	{ MODKEY,                       XK_r,      spawn,          sh(term " -e mocp")},
@@ -134,7 +134,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext,      	   spawn,     sh("mocp -f") },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_i,      togglescratch,  {.v = nvimpadcmd } },
-	{ MODKEY,                       XK_u,      togglescratch,  {.v = rangerpadcmd } },
+	{ MODKEY,                       XK_u,      togglescratch,  {.v = lfpadcmd } },
 	{ MODKEY,                       XK_o,      togglescratch,  {.v = htoppadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_h,      focusdir,       {.i = 0 } }, // left
