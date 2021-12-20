@@ -1,6 +1,5 @@
 6.2-urg-border              
 pertag-perseltag-6.2
-shif-tools-6.2
 sticky-6.1
 cyclelayouts-20180524-6.2   
 stickyindicator-6.2
@@ -15,6 +14,9 @@ status2d-6.2
 statuscmd-status2d-20210405-60bb3df
 center-6.2
 noborderfloatingfix-6.2
+shif-tools-6.2
+attachdirection-6.2
+fixborders-6.2
 
 I got the patches from https://github.com/bakkeby/patches/wiki(the author of these patches helped me a lot for applying the patches,thanks to bakkeby) and https://dwm.suckless.org/patches/
 
