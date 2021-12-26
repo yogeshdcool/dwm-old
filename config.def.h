@@ -111,7 +111,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_a,      spawn,          sh(term " -e htop")},
 	{ MODKEY,                       XK_g,      spawn,          sh(term " -e gotop -a")},
 	{ MODKEY,                       XK_r,      spawn,          sh(term " -e mocp")},
-	{ 0,		                    XK_Print,  spawn,          sh("scrot 'screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Pictures/screenshots/ ; feh ~/Pictures/screenshots/$f'") },
+	{ 0,		                    XK_Print,  spawn,          sh("scrot 'screenshot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~/Images/screenshots/ ; feh ~/Pictures/screenshots/$f'") },
 	{ MODKEY,                       XK_space,  spawn,          sh("~/.config/rofi/bin/launcher")},
 	{ Mod1Mask,                     XK_F2,     spawn,          sh("~/.config/rofi/bin/powermenu")},
 	{ Mod1Mask,                     XK_F3,     spawn,          sh("~/.config/rofi/bin/network")},
