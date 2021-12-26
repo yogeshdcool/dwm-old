@@ -15,6 +15,7 @@ statuscmd-status2d-20210405-60bb3df
 center-6.2
 noborderfloatingfix-6.2
 shif-tools-6.2
+fixborders-6.2
 
 I got the patches from https://github.com/bakkeby/patches/wiki(the author of these patches helped me a lot for applying the patches,thanks to bakkeby) and https://dwm.suckless.org/patches/
 
