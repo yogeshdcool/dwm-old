@@ -42,7 +42,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class  instance  title                      tags mask   iscentered   isfloating   monitor    scratch key */
-	{ NULL,   NULL,     "/Pictures/screenshots/",  0,          1,           1,           -1,        0  },
+	{ NULL,   NULL,     "/Images/screenshots/",  0,          1,           1,           -1,        0  },
 	{ NULL,   NULL,     "PYQT5_APP",               0,          0,           1,           -1,        0  },
 	{ "Dragon-drag-and-drop",   NULL,     NULL,                0,           1,            1,       -1,        0  },
 	{ NULL,   NULL,     "scratchpad",              0,          1,           1,           -1,       's' },
